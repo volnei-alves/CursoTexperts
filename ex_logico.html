@@ -46,10 +46,10 @@
         var alunoEstagio = []
 
         prova.filter(item =>{
-            if(item.nota <= 3){
+            if(item.nota < 3){
                 alunoReforco.push({...item, status: "Reforso"})
             }
-            if(item.nota >= 4){
+            if(item.nota > 4){
                 alunoEstagio.push({...item, status: "Estágio"})
             }
         })
