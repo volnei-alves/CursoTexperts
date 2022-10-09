@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Lógica de Programção</title>
+</head>
+<body>
+    <h1>Lógica de Programação - Desafio de lógica 1.2.28</h1>
+    <div id="mediaNota"></div>
+
+    <div id="alunoAleatorio"></div>
+
+    <div id="alunoReforco">Lista de Alunos em Reforço</div>
+    <br>
+    <div id="alunoEstagio">Lista de Alunos em Estágio</div>
+    <div id="taxaDeAcerto"></div>
+
+
+    <script>
+        var prova =  [
+            {"nome": "Pedro", "nota": 3},
+            {"nome": "Maria", "nota": 4},
+            {"nome": "Juliana", "nota": 2},
+            {"nome": "Fernando", "nota": 2},
+            {"nome": "Rita", "nota": 1},
+            {"nome": "Roque", "nota": 5},        
+        ]
+
+        // SOMA MEDIA DE NOTAS ENTRE ALUNOS
+        var totalNota = 0
+        prova.map(item => totalNota += item.nota)
+        const mediaNota = totalNota / prova.length
+        document.getElementById('mediaNota').innerHTML = `<p>Média de Notas: ${mediaNota.toFixed(2)} </p>`
+
+        /// BUSVA ALUNO ALEATÓRIO 
+        function randAlunos(prova){
+            const aluno = prova[~~(prova.length * Math.random())]
+            document.getElementById('alunoAleatorio').innerHTML = `<p>Nome Aluno Sorteado: ${aluno.nome} </p>`
+        }
+        randAlunos(prova)
+
+        // PESQUISA ALUNOS EM REFORSO E ESTAGIO
+        var alunoReforco = []
+        var alunoEstagio = []
+
+        prova.filter(item =>{
+            if(item.nota <= 3){
+                alunoReforco.push({...item, status: "Reforso"})
+            }
+            if(item.nota >= 4){
+                alunoEstagio.push({...item, status: "Estágio"})
+            }
+        })
+
+        
+        alunoReforco.map(item =>{
+            let lista = document.querySelector('#alunoReforco')
+            itemElement = document.createElement('li')
+            itemElement.appendChild(document.createTextNode(item.nome));
+            lista.appendChild(itemElement)          
+        })
+
+        alunoEstagio.map(item =>{
+            let lista = document.querySelector('#alunoEstagio')
+            itemElement = document.createElement('li')
+            itemElement.appendChild(document.createTextNode(item.nome));
+            lista.appendChild(itemElement)          
+        })
+       
+        // TAXA DE ACERTO DA PROVA
+        const provaTotalDePontos = prova.length * 5
+        const porcentagemAcertoProva = totalNota * 100 / provaTotalDePontos
+        
+        document.getElementById('taxaDeAcerto').innerHTML = `<p>Taxa de Acerto Prova: ${Math.floor(porcentagemAcertoProva)}%</p>`
+
+
+              
+    </script>
+</body>
+</html>
