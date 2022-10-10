@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Lógica de Programção</title>
+</head>
+
+<body>
+    <h1 >Lógica de Programação - Desafio de lógica 1.2.33</h1>
+    <div id="mediaNota"></div>
+
+    <div id="sorteioVitoria">
+        <h1>Você Ganhou!!!</h1>
+        <div class="tenor-gif-embed" data-postid="13354314" data-share-method="host" data-aspect-ratio="1.15607" data-width="40%"><a href="https://tenor.com/view/usagyuuun-confetti-sorpresa-gif-13354314"></a> </div> 
+    </div>
+    <div id="sorteioDerrota">
+        <h1>Não foi dessa VEZ</h1>
+        <div class="tenor-gif-embed" data-postid="22743099" data-share-method="host" data-aspect-ratio="0.996875" data-width="40%"><a href="https://tenor.com/view/lo-siento-burbuja-las-chicas-superpoderosas-lo-lamento-disculpa-gif-22743099"></a></div> 
+    </div>
+
+    <script>
+        let d1, d2, sorteio1, sorteio2, resultado, mensagem
+
+        for (var i = 1; i <= 6; i++) {
+            sorteio1 = Math.floor(Math.random() * 6 + 1)
+            sorteio2 = Math.floor(Math.random() * 6 + 1)
+
+            d1 = sorteio1
+            d2 = sorteio2
+
+            const resultadoSorteio = d1 + d2
+            var result = resultadoSorteio % 2 === 0 ? 'par' : 'impar';
+
+            if (result == "par") {
+                resultado = resultadoSorteio
+            }
+        }
+        console.log(resultado)
+        if(resultado <= 4){
+            document.getElementById("sorteioVitoria").style.display = "block"
+            document.getElementById("sorteioDerrota").style.display = "none"
+        }else{
+            document.getElementById("sorteioVitoria").style.display = "none"
+            document.getElementById("sorteioDerrota").style.display = "block"
+        }
+    </script>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+</body>
+
+</html>
