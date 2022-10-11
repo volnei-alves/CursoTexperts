@@ -1,2 +1,4 @@
 # CursoTexperts
-Curso T.EX
+
+### Curso intensivo Fulstack frontEnd em javascript e BanckEnd Java
+
